@@ -1,0 +1,22 @@
+$navbarHeight: 150px;
+$smallDeviceSize: 1100px;
+
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        background-color: var(--chakra-colors-gray-200);
+        -webkit-appearance: none;
+        width: 0.35em;
+        height: 0.35rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--chakra-colors-gray-400);
+        border-radius: 1rem;
+    }
+}
+
+@mixin smallDevice {
+    @media screen and (max-width: $smallDeviceSize) {
+        @content;
+    }
+}

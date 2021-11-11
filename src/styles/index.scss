@@ -1,0 +1,62 @@
+@import 'variables';
+
+.main {
+    font-size: 16px;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: $navbarHeight 1fr 1fr;
+    grid-template-areas: 'navbar editor preview';
+    overflow: hidden;
+
+    @include smallDevice {
+        $navbarHeight: calc($navbarHeight * 0.25);
+
+        font-size: 14px;
+        grid-template-columns: 100%;
+        grid-template-rows:
+            $navbarHeight
+            calc(50vh - #{$navbarHeight * 0.5})
+            calc(50vh - #{$navbarHeight * 0.5});
+        grid-template-areas: 'navbar' 'editor' 'preview';
+    }
+}
+
+.navbar {
+    grid-area: navbar;
+    background-color: var(--chakra-colors-gray-600);
+}
+
+.editor {
+    grid-area: editor;
+    overflow-x: hidden;
+
+    @include smallDevice {
+        overflow-x: scroll;
+        @include scrollbar;
+    }
+}
+
+.cm-scroller {
+    overflow: scroll;
+    @include scrollbar;
+
+    @include smallDevice {
+        overflow-y: auto;
+    }
+}
+
+.preview {
+    padding: 0.5rem 1rem;
+    grid-area: preview;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include scrollbar;
+
+    @include smallDevice {
+        padding: 0 1rem;
+    }
+}
+
+a {
+    color: var(--chakra-colors-blue-200) !important;
+}
