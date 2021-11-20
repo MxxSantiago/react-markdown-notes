@@ -1,0 +1,21 @@
+.navigationItem {
+    display: flex;
+    flex-direction: column;
+    width: 325px;
+    padding: 1rem 1rem 0.75rem 1rem;
+    border-bottom: 1px solid var(--chakra-colors-gray-700);
+
+    &:hover {
+        background-color: lighten(
+            $color: rgba(240, 234, 234, 0.034),
+            $amount: 0
+        );
+    }
+
+    &:active {
+        background-color: lighten(
+            $color: rgba(240, 234, 234, 0.043),
+            $amount: 0
+        );
+    }
+}
