@@ -4,13 +4,11 @@
     font-size: 16px;
     display: grid;
     height: 100vh;
-    grid-template-columns: $navbarHeight 1fr 1fr;
+    grid-template-columns: auto 1fr 1fr;
     grid-template-areas: 'navbar editor preview';
     overflow: hidden;
 
     @include smallDevice {
-        $navbarHeight: calc($navbarHeight * 0.25);
-
         font-size: 14px;
         grid-template-columns: 100%;
         grid-template-rows:
@@ -19,11 +17,6 @@
             calc(50vh - #{$navbarHeight * 0.5});
         grid-template-areas: 'navbar' 'editor' 'preview';
     }
-}
-
-.navbar {
-    grid-area: navbar;
-    background-color: var(--chakra-colors-gray-600);
 }
 
 .editor {
