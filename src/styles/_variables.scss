@@ -1,4 +1,6 @@
-$navbarHeight: 150px;
+$navbarHeight: 40px;
+
+// value related to useIsSmallDevice hook
 $smallDeviceSize: 1100px;
 
 @mixin scrollbar {
@@ -12,6 +14,19 @@ $smallDeviceSize: 1100px;
     &::-webkit-scrollbar-thumb {
         background-color: var(--chakra-colors-gray-400);
         border-radius: 1rem;
+    }
+}
+
+@mixin hiddenScrollbar {
+    &::-webkit-scrollbar {
+        position: absolute;
+        background-color: transparent;
+        -webkit-appearance: none;
+        width: 0.5em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--chakra-colors-gray-700);
     }
 }
 
