@@ -1,0 +1,10 @@
+.sidebar {
+    display: inline-flex;
+    height: 100vh;
+}
+
+.sidebarButton {
+    &:focus {
+        box-shadow: none !important;
+    }
+}
