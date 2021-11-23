@@ -1,3 +1,7 @@
+import { useRef, useState } from 'react';
+
+import TagIntegrator from '../tagIntegrator/TagIntegrator.component';
+
 import { Button } from '@chakra-ui/button';
 import { FormControl, FormLabel } from '@chakra-ui/form-control';
 import { Input } from '@chakra-ui/input';
@@ -10,15 +14,30 @@ import {
     ModalHeader,
     ModalOverlay,
 } from '@chakra-ui/modal';
-import { useState } from 'react';
+import { Divider } from '@chakra-ui/layout';
 
 const AddTaskModal = ({ isOpen, onClose }) => {
-    const [state, setState] = useState([]);
-    const tags = [];
+    const [tags, setTags] = useState([]);
+    const input = useRef();
+
+    const addNewNote = (event) => {
+        event.preventDefault();
+
+        const noteTitle = input.current.value;
+
+        if (!noteTitle.trim().length || !tags.length) {
+            alert('You need to enter a title and at least one tag.');
+            return;
+        }
+
+        console.log({ noteTitle, tags });
+        input.current.value = '';
+        setTags([]);
+    };
 
     return (
         <Modal
-            size="lg"
+            size="xl"
             isOpen={isOpen}
             onClose={onClose}
             isCentered={true}
@@ -26,19 +45,25 @@ const AddTaskModal = ({ isOpen, onClose }) => {
         >
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Create a new note</ModalHeader>
+                <ModalHeader bg="gray.600">Create a new note</ModalHeader>
+                <Divider />
                 <ModalCloseButton />
                 <ModalBody pb={6}>
-                    <FormControl>
+                    <FormControl mt={2}>
                         <FormLabel>Title</FormLabel>
-                        <Input />
+                        <Input
+                            ref={input}
+                            placeholder="Note title"
+                            spellCheck={false}
+                        />
                     </FormControl>
-                    <FormControl mt={4} onSubmit={() => alert('submited')}>
+                    <FormControl mt={8}>
                         <FormLabel>Tags</FormLabel>
+                        <TagIntegrator tags={tags} setTags={setTags} />
                     </FormControl>
                 </ModalBody>
                 <ModalFooter>
-                    <Button colorScheme="blue" mr={3}>
+                    <Button colorScheme="blue" mr={3} onClick={addNewNote}>
                         Create
                     </Button>
                     <Button onClick={onClose}>Cancel</Button>
