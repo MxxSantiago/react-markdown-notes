@@ -12,7 +12,7 @@ export function useIsSmallDevice() {
         window.addEventListener('resize', updateSize);
         updateSize();
 
-        return () => window.removeEventListener('reize', updateSize);
+        return () => window.removeEventListener('resize', updateSize);
     }, []);
 
     return isSmallDevice;
