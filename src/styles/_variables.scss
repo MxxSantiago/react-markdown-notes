@@ -1,7 +1,8 @@
 $navbarHeight: 40px;
+$sidebarWidth: 355px;
 
 // value related to useIsSmallDevice hook
-$smallDeviceSize: 1100px;
+$smallDeviceSize: 1099px;
 
 @mixin scrollbar {
     &::-webkit-scrollbar {
