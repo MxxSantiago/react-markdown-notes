@@ -1,0 +1,14 @@
+@import '/src//styles/variables';
+
+.preview {
+    padding: 0.5rem 1rem;
+    grid-area: preview;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include scrollbar;
+
+    @include smallDevice {
+        padding: 0 1rem;
+    }
+}
