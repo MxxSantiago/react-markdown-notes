@@ -1,0 +1,13 @@
+@import '/src//styles/variables';
+
+.editor {
+    grid-area: editor;
+    overflow-x: hidden;
+    min-width: 20vw;
+    width: 100%;
+
+    @include smallDevice {
+        overflow-x: scroll;
+        @include scrollbar;
+    }
+}
