@@ -1,7 +1,12 @@
+@import '/src//styles/variables';
+
 .sidebar {
     display: inline-flex;
     height: 100vh;
-    max-width: 355px;
+}
+
+.openSidebar {
+    width: $sidebarWidth;
 }
 
 .sidebarButton {

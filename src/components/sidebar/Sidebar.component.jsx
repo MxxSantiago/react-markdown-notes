@@ -5,7 +5,7 @@ import Navigation from '../navigation/Navigation.component';
 import ClosedIcon from '../icons/ClosedIcon.component';
 import OpenIcon from '../icons/OpenIcon.component';
 
-import { sidebar, sidebarButton } from './sidebar.module.scss';
+import { sidebar, openSidebar, sidebarButton } from './sidebar.module.scss';
 
 const data = [
     {
@@ -129,7 +129,7 @@ const Sidebar = () => {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <div className={sidebar}>
+        <div className={isOpen ? sidebar : `${sidebar} ${openSidebar}`}>
             {!isOpen ? <Navigation items={data} /> : null}
             <Button
                 borderRadius="0"
