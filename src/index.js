@@ -8,6 +8,10 @@ import App from './App.jsx';
 import './styles/index.scss';
 
 const theme = extendTheme({
+    config: {
+        useSystemColorMode: false,
+        initialColorMode: 'dark',
+    },
     colors: {
         customGray: {
             200: '#525966',

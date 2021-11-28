@@ -1,6 +1,6 @@
 @import '/src//styles/variables';
 
 .notes {
-    overflow-y: overlay;
+    overflow-y: auto;
     @include hiddenScrollbar;
 }

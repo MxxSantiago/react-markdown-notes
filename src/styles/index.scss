@@ -21,6 +21,7 @@
 
 // codeMirror scrollbar
 .cm-scroller {
+    font-family: var(--chakra-fonts-body) !important;
     overflow: scroll;
     @include scrollbar;
 
