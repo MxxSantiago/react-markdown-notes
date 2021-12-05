@@ -1,0 +1,14 @@
+.panelsFooter {
+    border-top: 1px solid var(--chakra-colors-gray-600);
+    display: flex;
+    justify-content: space-between;
+    grid-area: panelsFooter;
+}
+
+.panelsFooterIcon {
+    border-radius: 0 !important;
+
+    &:focus {
+        box-shadow: none !important;
+    }
+}
