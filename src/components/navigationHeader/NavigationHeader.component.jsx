@@ -4,11 +4,12 @@ import { Heading } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/layout';
 import { IconButton } from '@chakra-ui/button';
 
+import { BsPencilSquare } from 'react-icons/bs';
+
 import SearchTask from '../searchTask/SearchTask.component';
-import AddIcon from '../icons/AddIcon.component';
+import AddTaskModal from '../addTaskModal/AddTaskModal.component';
 
 import { navigationHeader } from './navigation-header.module.scss';
-import AddTaskModal from '../addTaskModal/AddTaskModal.component';
 
 const NavigationHeader = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -21,8 +22,9 @@ const NavigationHeader = () => {
             <Box d="flex">
                 <SearchTask />
                 <IconButton
+                    p="4"
                     onClick={onOpen}
-                    icon={<AddIcon />}
+                    icon={<BsPencilSquare />}
                     borderRadius="0"
                 />
                 <AddTaskModal isOpen={isOpen} onClose={onClose} />

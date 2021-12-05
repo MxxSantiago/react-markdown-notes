@@ -1,9 +1,9 @@
 import { useDisclosure } from '@chakra-ui/hooks';
-import { Button } from '@chakra-ui/button';
+import { IconButton } from '@chakra-ui/button';
 
 import Navigation from '../navigation/Navigation.component';
-import ClosedIcon from '../icons/ClosedIcon.component';
-import OpenIcon from '../icons/OpenIcon.component';
+
+import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg';
 
 import { sidebar, openSidebar, sidebarButton } from './sidebar.module.scss';
 
@@ -131,15 +131,16 @@ const Sidebar = () => {
     return (
         <div className={isOpen ? sidebar : `${sidebar} ${openSidebar}`}>
             {!isOpen ? <Navigation items={data} /> : null}
-            <Button
+            <IconButton
                 borderRadius="0"
-                colorScheme="customGray"
                 className={sidebarButton}
+                color="#fff"
+                colorScheme="customGray"
                 h="100%"
-                w="40px"
-                p="1"
+                icon={
+                    !isOpen ? <CgChevronDoubleLeft /> : <CgChevronDoubleRight />
+                }
                 onClick={onToggle}
-                children={!isOpen ? <ClosedIcon /> : <OpenIcon />}
             />
         </div>
     );
