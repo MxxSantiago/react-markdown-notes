@@ -10,7 +10,13 @@
 }
 
 .sidebarButton {
+    border-right: 1px solid var(--chakra-colors-gray-700) !important;
+
     &:focus {
         box-shadow: none !important;
+    }
+
+    @include smallDevice {
+        display: none;
     }
 }
