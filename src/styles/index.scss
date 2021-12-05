@@ -1,25 +1,31 @@
 @import 'variables';
 
 .main {
-    font-size: 15px;
     display: grid;
+    font-size: 15px;
     height: 100vh;
-    grid-template-columns: auto 1fr 1fr;
-    grid-template-areas: 'navbar editor preview';
+    grid-template-areas: 'navbar panelsContainer';
+    grid-template-columns: auto 1fr;
+    width: 100vw;
     overflow: hidden;
 
     @include smallDevice {
         font-size: 14px;
+        grid-template-areas: 'navbar' 'panelsContainer';
         grid-template-columns: 100%;
-        grid-template-rows:
-            $navbarHeight
-            calc(45vh - #{$navbarHeight * 0.5})
-            calc(55vh - #{$navbarHeight * 0.5});
-        grid-template-areas: 'navbar' 'editor' 'preview';
+        grid-template-rows: $navbarHeight auto;
     }
 }
 
-// codeMirror scrollbar
+.chakra-code {
+    max-width: 100%;
+
+    * {
+        @include scrollbar;
+    }
+}
+
+// codeMirror
 .cm-scroller {
     font-family: var(--chakra-fonts-body) !important;
     overflow: scroll;
@@ -28,8 +34,4 @@
     @include smallDevice {
         overflow-y: auto;
     }
-}
-
-a {
-    color: var(--chakra-colors-blue-200) !important;
 }
