@@ -6,13 +6,33 @@
     grid-area: panelsContainer;
     grid-template-areas: 'editor preview' 'panelsFooter panelsFooter';
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr min-content;
     width: 100%;
 
     @include smallDevice {
         height: calc(100vh - #{$navbarHeight});
         grid-template-areas: 'editor' 'preview' 'panelsFooter';
         grid-template-columns: 100%;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr min-content;
+    }
+}
+
+.panelsContainerViewOn {
+    grid-template-areas: 'preview' 'panelsFooter';
+    grid-template-columns: 100%;
+
+    @include smallDevice {
+        grid-template-areas: 'preview' 'panelsFooter';
+        grid-template-rows: 1fr min-content;
+    }
+}
+
+.panelsContainerViewOff {
+    grid-template-areas: 'editor' 'panelsFooter panelsFooter';
+    grid-template-columns: 100%;
+
+    @include smallDevice {
+        grid-template-areas: 'editor' 'panelsFooter';
+        grid-template-rows: 1fr min-content;
     }
 }

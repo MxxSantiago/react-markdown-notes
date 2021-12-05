@@ -12,9 +12,10 @@ import {
 import { CgScan, CgCopy, CgTrash, CgSoftwareDownload } from 'react-icons/cg';
 
 import { panelsFooter, panelsFooterIcon } from './panels-footer.module.scss';
+import { useEffect } from 'react';
 
-const PanelsFooter = () => {
-    const [flag, setFlag] = useBoolean();
+const PanelsFooter = ({ view, setView, IViews }) => {
+    const { ON, OFF, SPLITTED } = IViews;
 
     return (
         <Box bg="gray.700" className={panelsFooter}>
@@ -40,12 +41,19 @@ const PanelsFooter = () => {
                     bg="gray.700"
                     className={panelsFooterIcon}
                     icon={<CgScan />}
+                    onClick={() => setView(SPLITTED)}
                 />
                 <IconButton
                     bg="gray.700"
                     className={panelsFooterIcon}
-                    icon={!flag ? <IoEyeOutline /> : <IoEyeOffOutline />}
-                    onClick={setFlag.toggle}
+                    icon={<IoEyeOffOutline />}
+                    onClick={() => setView(OFF)}
+                />
+                <IconButton
+                    bg="gray.700"
+                    className={panelsFooterIcon}
+                    icon={<IoEyeOutline />}
+                    onClick={() => setView(ON)}
                 />
                 <IconButton
                     bg="gray.700"
