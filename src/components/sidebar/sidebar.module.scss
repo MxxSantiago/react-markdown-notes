@@ -3,6 +3,13 @@
 .sidebar {
     display: inline-flex;
     height: 100vh;
+
+    @include smallDevice {
+        height: calc(100vh - #{$navbarHeight});
+        position: absolute;
+        z-index: 99;
+        width: 100% !important;
+    }
 }
 
 .openSidebar {
