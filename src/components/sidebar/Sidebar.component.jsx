@@ -6,6 +6,7 @@ import Navigation from '../navigation/Navigation.component';
 import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg';
 
 import { sidebar, openSidebar, sidebarButton } from './sidebar.module.scss';
+import { Box } from '@chakra-ui/layout';
 
 const data = [
     {
@@ -129,7 +130,10 @@ const Sidebar = () => {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <div className={isOpen ? sidebar : `${sidebar} ${openSidebar}`}>
+        <Box
+            bg="gray.800"
+            className={isOpen ? sidebar : `${sidebar} ${openSidebar}`}
+        >
             {!isOpen ? <Navigation items={data} /> : null}
             <IconButton
                 borderRadius="0"
@@ -142,7 +146,7 @@ const Sidebar = () => {
                 }
                 onClick={onToggle}
             />
-        </div>
+        </Box>
     );
 };
 
