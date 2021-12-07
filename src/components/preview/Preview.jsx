@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
+import remarkGfm from 'remark-gfm';
 
 import { components } from '../../react-markdown-components';
 
@@ -11,6 +12,7 @@ const Preview = ({ document }) => {
             className={preview}
             children={document}
             components={ChakraUIRenderer(components)}
+            remarkPlugins={[remarkGfm]}
         />
     );
 };
