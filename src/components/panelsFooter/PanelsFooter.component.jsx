@@ -11,6 +11,7 @@ import {
 import { CgScan, CgCopy, CgTrash, CgSoftwareDownload } from 'react-icons/cg';
 
 import { panelsFooter, panelsFooterIcon } from './panels-footer.module.scss';
+import { Tooltip } from '@chakra-ui/react';
 
 const PanelsFooter = ({ setView, IViews }) => {
     const { ON, OFF, SPLITTED } = IViews;
@@ -18,53 +19,60 @@ const PanelsFooter = ({ setView, IViews }) => {
     return (
         <Box bg="gray.700" className={panelsFooter}>
             <div>
-                <IconButton
-                    bg="gray.700"
-                    className={panelsFooterIcon}
-                    icon={<CgTrash />}
-                    title="Delete note"
-                />
-                <IconButton
-                    bg="gray.700"
-                    className={panelsFooterIcon}
-                    icon={<CgCopy />}
-                    title="Copy content to clipboard"
-                />
-                <IconButton
-                    bg="gray.700"
-                    className={panelsFooterIcon}
-                    icon={<CgSoftwareDownload />}
-                    title="Download .md file"
-                />
+                <Tooltip label="Delete note">
+                    <IconButton
+                        bg="gray.700"
+                        className={panelsFooterIcon}
+                        icon={<CgTrash />}
+                    />
+                </Tooltip>
+                <Tooltip label="Copy content to clipboard">
+                    <IconButton
+                        bg="gray.700"
+                        className={panelsFooterIcon}
+                        icon={<CgCopy />}
+                    />
+                </Tooltip>
+                <Tooltip label="Download .md file">
+                    <IconButton
+                        bg="gray.700"
+                        className={panelsFooterIcon}
+                        icon={<CgSoftwareDownload />}
+                    />
+                </Tooltip>
             </div>
             <div>
-                <IconButton
-                    bg="gray.700"
-                    className={panelsFooterIcon}
-                    icon={<CgScan />}
-                    onClick={() => setView(SPLITTED)}
-                    title="Toggle views"
-                />
-                <IconButton
-                    bg="gray.700"
-                    className={panelsFooterIcon}
-                    icon={<IoEyeOffOutline />}
-                    onClick={() => setView(OFF)}
-                    title="Hide preview"
-                />
-                <IconButton
-                    bg="gray.700"
-                    className={panelsFooterIcon}
-                    icon={<IoEyeOutline />}
-                    onClick={() => setView(ON)}
-                    title="Hide editor"
-                />
-                <IconButton
-                    bg="gray.700"
-                    className={panelsFooterIcon}
-                    icon={<IoSettingsOutline />}
-                    title="Settings"
-                />
+                <Tooltip label="Toggle views">
+                    <IconButton
+                        bg="gray.700"
+                        className={panelsFooterIcon}
+                        icon={<CgScan />}
+                        onClick={() => setView(SPLITTED)}
+                    />
+                </Tooltip>
+                <Tooltip label="Hide preview">
+                    <IconButton
+                        bg="gray.700"
+                        className={panelsFooterIcon}
+                        icon={<IoEyeOffOutline />}
+                        onClick={() => setView(OFF)}
+                    />
+                </Tooltip>
+                <Tooltip label="Hide editor">
+                    <IconButton
+                        bg="gray.700"
+                        className={panelsFooterIcon}
+                        icon={<IoEyeOutline />}
+                        onClick={() => setView(ON)}
+                    />
+                </Tooltip>
+                <Tooltip label="Settings" placement="top-start">
+                    <IconButton
+                        bg="gray.700"
+                        className={panelsFooterIcon}
+                        icon={<IoSettingsOutline />}
+                    />
+                </Tooltip>
             </div>
         </Box>
     );
