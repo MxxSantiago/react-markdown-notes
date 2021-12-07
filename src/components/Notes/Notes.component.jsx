@@ -7,8 +7,8 @@ import { notes } from './notes.module.scss';
 const Notes = ({ items }) => {
     return (
         <ul className={notes}>
-            {items.map((item) => (
-                <Note data={item} />
+            {items.map((item, index) => (
+                <Note data={item} key={index} />
             ))}
         </ul>
     );
