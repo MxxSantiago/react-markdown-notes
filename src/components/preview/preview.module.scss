@@ -13,7 +13,43 @@
     }
 
     @include smallDevice {
-        padding: 0 1rem;
+        padding: 0.5rem 1rem;
         max-width: 100%;
+    }
+
+    .chakra-code {
+        max-width: 100%;
+
+        * {
+            @include scrollbar;
+        }
+    }
+
+    ul {
+        li {
+            label {
+                input {
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    div {
+        hr {
+            margin: 1rem 0;
+        }
+    }
+
+    hr {
+        margin: 1rem 0;
+    }
+
+    code {
+        max-width: 100%;
+
+        * {
+            @include scrollbar;
+        }
     }
 }

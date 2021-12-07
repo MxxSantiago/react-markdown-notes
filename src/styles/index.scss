@@ -17,14 +17,6 @@
     }
 }
 
-.chakra-code {
-    max-width: 100%;
-
-    * {
-        @include scrollbar;
-    }
-}
-
 // codeMirror
 .cm-scroller {
     font-family: var(--chakra-fonts-body) !important;

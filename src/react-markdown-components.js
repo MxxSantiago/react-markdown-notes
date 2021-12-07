@@ -10,7 +10,7 @@ export const components = {
                 children={String(children).replace(/\n$/, '')}
                 style={atomOneDarkReasonable}
                 PreTag="div"
-                language={match[0]}
+                language={match[1]}
                 {...props}
             />
         ) : (
@@ -30,7 +30,7 @@ export const components = {
                 <Heading as="h1" size="2xl">
                     {children}
                 </Heading>
-                <Divider orientation="horizontal" p="2" />
+                <Divider orientation="horizontal" />
             </div>
         );
     },
@@ -41,7 +41,7 @@ export const components = {
                 <Heading as="h2" size="xl">
                     {children}
                 </Heading>
-                <Divider orientation="horizontal" p="2" />
+                <Divider orientation="horizontal" />
             </div>
         );
     },
@@ -52,7 +52,7 @@ export const components = {
                 <Heading as="h3" size="lg">
                     {children}
                 </Heading>
-                <Divider orientation="horizontal" p="1" />
+                <Divider orientation="horizontal" />
             </div>
         );
     },
