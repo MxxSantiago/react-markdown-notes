@@ -24,6 +24,6 @@
     }
 
     @include smallDevice {
-        display: none;
+        display: none !important;
     }
 }
