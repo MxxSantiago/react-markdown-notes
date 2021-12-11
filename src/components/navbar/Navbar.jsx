@@ -30,7 +30,7 @@ const Navbar = () => {
                             onClick={setFlag.toggle}
                         />
                     </Box>
-                    {flag ? <Sidebar /> : null}
+                    {flag ? <Sidebar setFlag={setFlag} /> : null}
                 </Box>
             )}
         </nav>

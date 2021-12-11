@@ -6,14 +6,14 @@ import { Divider } from '@chakra-ui/layout';
 import { navigation } from './navigation.module.scss';
 import Notes from '../Notes/Notes.component';
 
-const Navigation = ({ items }) => {
+const Navigation = ({ setFlag, items }) => {
     return (
         <div className={navigation}>
             <NavigationHeader />
             <Divider />
             <FilterByTag />
             <Divider />
-            <Notes items={items} />
+            <Notes setFlag={setFlag} items={items} />
         </div>
     );
 };

@@ -10,7 +10,7 @@ import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg';
 
 import { sidebar, openSidebar, sidebarButton } from './sidebar.module.scss';
 
-const Sidebar = () => {
+const Sidebar = ({ setFlag }) => {
     const { notes } = useNotes();
 
     const { isOpen, onToggle } = useDisclosure();
@@ -20,7 +20,9 @@ const Sidebar = () => {
             bg="gray.800"
             className={isOpen ? sidebar : `${sidebar} ${openSidebar}`}
         >
-            {!isOpen ? <Navigation items={notes.notes} /> : null}
+            {!isOpen ? (
+                <Navigation setFlag={setFlag} items={notes.notes} />
+            ) : null}
             <IconButton
                 borderRadius="0"
                 className={sidebarButton}
