@@ -1,79 +1,31 @@
-import React from 'react';
+import DeleteNoteButton from '../deleteNoteButton/DeleteNoteButton.component';
+import CopyContentButton from '../copyContentButton/CopyContentButton.component';
+import DownloadFileButton from '../downloadFileButton/DownloadFileButton.component';
+import SaveChangesButton from '../saveChangesButton/SaveChangesButton.component';
 
-import useNotes from '../../hooks/useNotes';
-
-import { IconButton, Button } from '@chakra-ui/button';
+import { IconButton } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
-import { Tooltip, useClipboard } from '@chakra-ui/react';
+import { Tooltip } from '@chakra-ui/react';
 
 import {
     IoEyeOutline,
     IoEyeOffOutline,
     IoSettingsOutline,
-    IoSaveOutline,
 } from 'react-icons/io5';
-import { CgScan, CgCopy, CgTrash, CgSoftwareDownload } from 'react-icons/cg';
+import { CgScan } from 'react-icons/cg';
 
 import { panelsFooter, panelsFooterIcon } from './panels-footer.module.scss';
 
 const PanelsFooter = ({ setView, IViews, doc }) => {
-    let { notes, activeNote, deleteNote } = useNotes();
-    const { hasCopied, onCopy } = useClipboard(doc.toString());
-
     const { ON, OFF, SPLITTED } = IViews;
-
-    const saveNoteContent = () => {
-        activeNote.content = doc.toString();
-    };
 
     return (
         <Box bg="gray.700" className={panelsFooter}>
             <div>
-                {notes.notes.length > 1 ? (
-                    <Tooltip label="Delete note">
-                        <IconButton
-                            bg="gray.700"
-                            className={panelsFooterIcon}
-                            icon={<CgTrash />}
-                            onClick={() => deleteNote(notes.activeNote)}
-                        />
-                    </Tooltip>
-                ) : null}
-                <Tooltip label="Copy content to clipboard">
-                    {hasCopied ? (
-                        <Button
-                            bg="gray.700"
-                            className={panelsFooterIcon}
-                            leftIcon={<CgCopy />}
-                        >
-                            Copied!!
-                        </Button>
-                    ) : (
-                        <IconButton
-                            bg="gray.700"
-                            className={panelsFooterIcon}
-                            icon={<CgCopy />}
-                            onClick={onCopy}
-                        />
-                    )}
-                </Tooltip>
-                <Tooltip label="Download .md file">
-                    <IconButton
-                        bg="gray.700"
-                        className={panelsFooterIcon}
-                        icon={<CgSoftwareDownload />}
-                    />
-                </Tooltip>
-                <Tooltip label="Save changes">
-                    <IconButton
-                        colorScheme="green"
-                        variant="outline"
-                        border="none"
-                        className={panelsFooterIcon}
-                        icon={<IoSaveOutline />}
-                        onClick={saveNoteContent}
-                    />
-                </Tooltip>
+                <DeleteNoteButton />
+                <CopyContentButton document={doc} />
+                <DownloadFileButton document={doc} />
+                <SaveChangesButton document={doc} />
             </div>
             <div>
                 <Tooltip label="Toggle views">
