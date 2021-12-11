@@ -1,132 +1,18 @@
+import useNotes from '../../hooks/useNotes';
+
 import { useDisclosure } from '@chakra-ui/hooks';
 import { IconButton } from '@chakra-ui/button';
+import { Box } from '@chakra-ui/layout';
 
 import Navigation from '../navigation/Navigation.component';
 
 import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg';
 
 import { sidebar, openSidebar, sidebarButton } from './sidebar.module.scss';
-import { Box } from '@chakra-ui/layout';
-
-const data = [
-    {
-        title: 'POO Java programming',
-        tags: [
-            {
-                title: 'Exercises',
-                color: 'pink',
-            },
-            {
-                title: 'Java',
-                color: 'red',
-            },
-        ],
-    },
-    {
-        title: 'Javascript algorithm',
-        tags: [
-            {
-                title: 'Javascript',
-                color: 'yellow',
-            },
-        ],
-    },
-    {
-        title: 'Next.js new update',
-        tags: [
-            {
-                title: 'Javascript',
-                color: 'yellow',
-            },
-            {
-                title: 'Study',
-                color: 'cyan',
-            },
-        ],
-    },
-    {
-        title: 'Algebra homework',
-        tags: [
-            {
-                title: 'Algebra',
-                color: 'gray',
-            },
-            {
-                title: 'Homework',
-                color: 'blue',
-            },
-        ],
-    },
-    {
-        title: 'Shopping list',
-        tags: [
-            {
-                title: 'To Do',
-                color: 'green',
-            },
-        ],
-    },
-
-    {
-        title: 'POO Java programming',
-        tags: [
-            {
-                title: 'Exercises',
-                color: 'pink',
-            },
-            {
-                title: 'Java',
-                color: 'red',
-            },
-        ],
-    },
-    {
-        title: 'Javascript algorithm',
-        tags: [
-            {
-                title: 'Javascript',
-                color: 'yellow',
-            },
-        ],
-    },
-    {
-        title: 'Next.js new update',
-        tags: [
-            {
-                title: 'Javascript',
-                color: 'yellow',
-            },
-            {
-                title: 'Study',
-                color: 'cyan',
-            },
-        ],
-    },
-    {
-        title: 'Algebra homework',
-        tags: [
-            {
-                title: 'Algebra',
-                color: 'gray',
-            },
-            {
-                title: 'Homework',
-                color: 'blue',
-            },
-        ],
-    },
-    {
-        title: 'Shopping list',
-        tags: [
-            {
-                title: 'To Do',
-                color: 'green',
-            },
-        ],
-    },
-];
 
 const Sidebar = () => {
+    const { notes } = useNotes();
+
     const { isOpen, onToggle } = useDisclosure();
 
     return (
@@ -134,7 +20,7 @@ const Sidebar = () => {
             bg="gray.800"
             className={isOpen ? sidebar : `${sidebar} ${openSidebar}`}
         >
-            {!isOpen ? <Navigation items={data} /> : null}
+            {!isOpen ? <Navigation items={notes.notes} /> : null}
             <IconButton
                 borderRadius="0"
                 className={sidebarButton}
