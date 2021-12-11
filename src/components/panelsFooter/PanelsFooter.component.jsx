@@ -2,9 +2,9 @@ import React from 'react';
 
 import useNotes from '../../hooks/useNotes';
 
-import { IconButton } from '@chakra-ui/button';
+import { IconButton, Button } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
-import { Tooltip } from '@chakra-ui/react';
+import { Tooltip, useClipboard } from '@chakra-ui/react';
 
 import {
     IoEyeOutline,
@@ -18,6 +18,7 @@ import { panelsFooter, panelsFooterIcon } from './panels-footer.module.scss';
 
 const PanelsFooter = ({ setView, IViews, doc }) => {
     let { notes, activeNote, deleteNote } = useNotes();
+    const { hasCopied, onCopy } = useClipboard(doc.toString());
 
     const { ON, OFF, SPLITTED } = IViews;
 
@@ -39,11 +40,22 @@ const PanelsFooter = ({ setView, IViews, doc }) => {
                     </Tooltip>
                 ) : null}
                 <Tooltip label="Copy content to clipboard">
-                    <IconButton
-                        bg="gray.700"
-                        className={panelsFooterIcon}
-                        icon={<CgCopy />}
-                    />
+                    {hasCopied ? (
+                        <Button
+                            bg="gray.700"
+                            className={panelsFooterIcon}
+                            leftIcon={<CgCopy />}
+                        >
+                            Copied!!
+                        </Button>
+                    ) : (
+                        <IconButton
+                            bg="gray.700"
+                            className={panelsFooterIcon}
+                            icon={<CgCopy />}
+                            onClick={onCopy}
+                        />
+                    )}
                 </Tooltip>
                 <Tooltip label="Download .md file">
                     <IconButton
