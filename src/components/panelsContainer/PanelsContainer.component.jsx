@@ -1,61 +1,51 @@
-import { useCallback, useState } from 'react';
-
 import React from 'react';
+
+import { useEffect, useState } from 'react';
+
+import useNotes from '../../hooks/useNotes';
+
 import Editor from '../editor/Editor';
 import Preview from '../preview/Preview';
 import PanelsFooter from '../panelsFooter/PanelsFooter.component';
 
 import { Box } from '@chakra-ui/layout';
 
-import {
-    panelsContainer,
-    panelsContainerViewOn,
-    panelsContainerViewOff,
-} from './panels-container.module.scss';
-
-const IViews = {
-    ON: 'on',
-    OFF: 'off',
-    SPLITTED: 'splitted',
-};
-const { ON, OFF, SPLITTED } = IViews;
+import { usePanelsStructure } from './usePanelsStructure';
 
 const PanelsContainer = () => {
-    const [view, setView] = useState(SPLITTED);
-    const [doc, setDoc] = useState('# Hello, World!!');
+    const { notes, activeNote } = useNotes();
 
-    const handleDocChange = useCallback((newDoc) => {
-        setDoc(newDoc);
-    }, []);
+    const [IViews, view, setView, getPanelsStructure] = usePanelsStructure();
 
-    const panelsStructure = () => {
-        if (view === SPLITTED) {
-            return `${panelsContainer}`;
-        }
+    const [doc, setDoc] = useState(activeNote.content);
 
-        if (view === ON) {
-            return `${panelsContainer} ${panelsContainerViewOn}`;
-        }
+    //(CM componentWillReceiveProps is debounced)
+    const [value, setValue] = useState(1);
 
-        if (view === OFF) {
-            return `${panelsContainer} ${panelsContainerViewOff}`;
-        }
-    };
+    useEffect(() => {
+        setValue((val) => val + 1);
+        setDoc(activeNote.content);
+    }, [notes.activeNote]);
 
     return (
-        <Box className={panelsStructure()}>
-            {view === SPLITTED ? (
+        <Box className={getPanelsStructure()}>
+            {view === IViews.SPLITTED ? (
                 <>
-                    <Editor onChange={handleDocChange} initialDoc={doc} />
+                    <Editor key={value} setDoc={setDoc} initialDoc={doc} />
                     <Preview document={doc} />
                 </>
-            ) : view === ON ? (
+            ) : view === IViews.ON ? (
                 <Preview document={doc} />
             ) : (
-                <Editor onChange={handleDocChange} initialDoc={doc} />
+                <Editor key={value} setDoc={setDoc} initialDoc={doc} />
             )}
 
-            <PanelsFooter view={view} setView={setView} IViews={IViews} />
+            <PanelsFooter
+                view={view}
+                setView={setView}
+                IViews={IViews}
+                doc={doc}
+            />
         </Box>
     );
 };

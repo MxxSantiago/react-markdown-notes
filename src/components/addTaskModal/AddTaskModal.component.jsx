@@ -15,12 +15,14 @@ import {
     ModalOverlay,
 } from '@chakra-ui/modal';
 import { Divider } from '@chakra-ui/layout';
+import useNotes from '../../hooks/useNotes';
 
 const AddTaskModal = ({ isOpen, onClose }) => {
+    const { addNewNote } = useNotes();
     const [tags, setTags] = useState([]);
     const input = useRef();
 
-    const addNewNote = (event) => {
+    const addNote = (event) => {
         event.preventDefault();
 
         const noteTitle = input.current.value;
@@ -30,7 +32,15 @@ const AddTaskModal = ({ isOpen, onClose }) => {
             return;
         }
 
-        console.log({ noteTitle, tags });
+        const newNote = {
+            content: '',
+            id: Date.now(),
+            tags: tags,
+            title: noteTitle,
+        };
+
+        addNewNote(newNote);
+
         input.current.value = '';
         setTags([]);
     };
@@ -63,7 +73,7 @@ const AddTaskModal = ({ isOpen, onClose }) => {
                     </FormControl>
                 </ModalBody>
                 <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={addNewNote}>
+                    <Button colorScheme="blue" mr={3} onClick={addNote}>
                         Create
                     </Button>
                     <Button onClick={onClose}>Cancel</Button>

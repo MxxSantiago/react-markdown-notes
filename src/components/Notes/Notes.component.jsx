@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Note from '../navigationItem/note.component';
+import Note from '../navigationItem/Note.component';
 
 import { notes } from './notes.module.scss';
 

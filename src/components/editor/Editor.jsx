@@ -3,11 +3,10 @@ import useCodeMirror from '../../hooks/useCodemirror';
 
 import { editor } from './editor.module.scss';
 
-const Editor = ({ onChange, initialDoc }) => {
-    const handleChange = useCallback(
-        (state) => onChange(state.doc.toString()),
-        [onChange]
-    );
+const Editor = ({ initialDoc, setDoc }) => {
+    const handleChange = useCallback((state) => {
+        setDoc(state.doc.toString());
+    }, []);
 
     const [refContainer] = useCodeMirror({
         initialDoc: initialDoc,
