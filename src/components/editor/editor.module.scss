@@ -6,7 +6,6 @@
     width: 100%;
 
     @include smallDevice {
-        overflow-x: scroll;
-        @include scrollbar;
+        border-bottom: 1px solid var(--chakra-colors-gray-600);
     }
 }
