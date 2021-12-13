@@ -1,13 +1,16 @@
 import { IconButton, Tooltip } from '@chakra-ui/react';
 
 import { CgSoftwareDownload } from 'react-icons/cg';
+import useNotes from '../../hooks/useNotes';
 
 const DownloadFileButton = ({ document }) => {
+    const { activeNote } = useNotes();
+
     const mdArchive = new Blob([document.toString()], { type: 'text/plain' });
     const downloadMdArchive = window.URL.createObjectURL(mdArchive);
 
     return (
-        <a download="note.md" href={downloadMdArchive}>
+        <a download={`${activeNote.title}.md`} href={downloadMdArchive}>
             <Tooltip label="Download .md file">
                 <IconButton
                     borderRadius="0"
