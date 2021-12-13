@@ -1,4 +1,4 @@
-.navigationItem {
+.note {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
@@ -19,4 +19,14 @@
             $amount: 0
         );
     }
+}
+
+.selectedNote {
+    align-items: flex-start;
+    background-color: lighten($color: rgba(240, 234, 234, 0.068), $amount: 0);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 1rem 0.75rem 1rem;
+    border-bottom: 1px solid var(--chakra-colors-gray-700);
 }

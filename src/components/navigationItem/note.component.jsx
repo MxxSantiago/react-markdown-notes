@@ -3,18 +3,27 @@ import useNotes from '../../hooks/useNotes';
 import { Box, Text } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
 
-import { navigationItem } from './note.module.scss';
+import { note, selectedNote } from './note.module.scss';
 
 const Note = ({ data }) => {
-    const { changeActiveNote } = useNotes();
+    const { notes, changeActiveNote } = useNotes();
 
     const { title, tags, id } = data;
+
+    const isSelected = () => {
+        if (notes.activeNote === id) {
+            return selectedNote;
+        }
+
+        return note;
+    };
 
     return (
         <li>
             <Box
                 as="button"
-                className={navigationItem}
+                bg="gray.800"
+                className={isSelected()}
                 onClick={() => changeActiveNote(id)}
             >
                 <b>{title}</b>
