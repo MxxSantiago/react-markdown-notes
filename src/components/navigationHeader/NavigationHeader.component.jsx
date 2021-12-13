@@ -11,7 +11,7 @@ import AddTaskModal from '../addTaskModal/AddTaskModal.component';
 
 import { navigationHeader } from './navigation-header.module.scss';
 
-const NavigationHeader = () => {
+const NavigationHeader = ({ visibleNotes, setVisibleNotes }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
@@ -20,14 +20,18 @@ const NavigationHeader = () => {
                 Notes
             </Heading>
             <Box d="flex">
-                <SearchTask />
+                <SearchTask setVisibleNotes={setVisibleNotes} />
                 <IconButton
                     p="4"
                     onClick={onOpen}
                     icon={<BsPencilSquare />}
                     borderRadius="0"
                 />
-                <AddTaskModal isOpen={isOpen} onClose={onClose} />
+                <AddTaskModal
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    setVisibleNotes={setVisibleNotes}
+                />
             </Box>
         </div>
     );

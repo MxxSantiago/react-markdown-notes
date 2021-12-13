@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 
+import useNotes from '../../hooks/useNotes';
+
 import TagIntegrator from '../tagIntegrator/TagIntegrator.component';
 
 import { Button } from '@chakra-ui/button';
@@ -15,9 +17,10 @@ import {
     ModalOverlay,
 } from '@chakra-ui/modal';
 import { Divider } from '@chakra-ui/layout';
-import useNotes from '../../hooks/useNotes';
 
-const AddTaskModal = ({ isOpen, onClose }) => {
+const AddTaskModal = ({ isOpen, onClose, setVisibleNotes }) => {
+    const { notes } = useNotes();
+
     const { addNewNote } = useNotes();
     const [tags, setTags] = useState([]);
     const input = useRef();
@@ -40,6 +43,8 @@ const AddTaskModal = ({ isOpen, onClose }) => {
         };
 
         addNewNote(newNote);
+
+        setVisibleNotes([...notes.notes, newNote]);
 
         input.current.value = '';
         setTags([]);
