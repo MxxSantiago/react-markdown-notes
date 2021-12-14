@@ -1,20 +1,10 @@
+import { initialNote } from '../../initial-note';
+
 import types from '../types/types';
 
 const initialState = {
-    notes: [
-        {
-            content: '# Note title',
-            id: 111,
-            tags: [
-                {
-                    title: 'Examples',
-                    color: 'blue',
-                },
-            ],
-            title: 'Example note',
-        },
-    ],
-    activeNote: 111,
+    notes: [initialNote],
+    activeNote: 928734,
 };
 
 export const notesReducer = (state = initialState, action) => {
@@ -40,6 +30,23 @@ export const notesReducer = (state = initialState, action) => {
                 notes: state.notes.filter((note) => note.id !== action.payload),
                 activeNote: newActiveNote,
             };
+        case types.notesSaveNoteContent:
+            const activeNoteIndex = state.notes.findIndex(
+                (note) => note.id === state.activeNote
+            );
+
+            return Object.assign({}, state, {
+                ...state,
+                notes: [
+                    ...state.notes.slice(0, activeNoteIndex),
+                    Object.assign(
+                        {},
+                        state.notes[activeNoteIndex],
+                        action.payload
+                    ),
+                    ...state.notes.slice(activeNoteIndex + 1),
+                ],
+            });
         default:
             return state;
     }
