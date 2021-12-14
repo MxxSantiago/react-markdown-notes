@@ -25,8 +25,6 @@ const Navigation = ({ setFlag }) => {
                 visibleNotes={visibleNotes}
             />
             <Divider />
-            <FilterByTag />
-            <Divider />
             <Notes setFlag={setFlag} items={visibleNotes} />
         </div>
     );
