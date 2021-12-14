@@ -14,3 +14,8 @@ export const deleteNote = (id) => ({
     type: types.notesDeleteNote,
     payload: id,
 });
+
+export const saveNoteContent = (content) => ({
+    type: types.notesSaveNoteContent,
+    payload: { content: content },
+});
