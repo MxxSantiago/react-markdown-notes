@@ -2,6 +2,7 @@ import DeleteNoteButton from '../deleteNoteButton/DeleteNoteButton.component';
 import CopyContentButton from '../copyContentButton/CopyContentButton.component';
 import DownloadFileButton from '../downloadFileButton/DownloadFileButton.component';
 import SaveChangesButton from '../saveChangesButton/SaveChangesButton.component';
+import AboutButton from '../aboutButton/AboutButton.component';
 
 import { IconButton } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
@@ -52,13 +53,7 @@ const PanelsFooter = ({ setView, IViews, doc }) => {
                         onClick={() => setView(ON)}
                     />
                 </Tooltip>
-                <Tooltip label="Settings" placement="top-start">
-                    <IconButton
-                        bg="gray.700"
-                        className={panelsFooterIcon}
-                        icon={<IoSettingsOutline />}
-                    />
-                </Tooltip>
+                <AboutButton />
             </div>
         </Box>
     );
