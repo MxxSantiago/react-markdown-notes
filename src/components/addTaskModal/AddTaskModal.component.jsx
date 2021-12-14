@@ -59,7 +59,7 @@ const AddTaskModal = ({ isOpen, onClose, setVisibleNotes }) => {
             motionPreset="slideInBottom"
         >
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent mx="5">
                 <ModalHeader bg="gray.600">Create a new note</ModalHeader>
                 <Divider />
                 <ModalCloseButton />
