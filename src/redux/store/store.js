@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { loadState, saveState } from '../../localStorage';
 import { notesReducer } from '../reducers/notesReducer';
 
 const composeEnhancers =
@@ -13,5 +14,10 @@ const reducers = combineReducers({
 
 export const store = createStore(
     reducers,
+    loadState(),
     composeEnhancers(applyMiddleware(thunk))
 );
+
+store.subscribe(() => {
+    saveState(store.getState());
+});
