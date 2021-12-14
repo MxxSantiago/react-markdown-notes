@@ -5,13 +5,13 @@ import { IconButton, Tooltip, useBoolean, useToast } from '@chakra-ui/react';
 import { IoSaveOutline } from 'react-icons/io5';
 
 const SaveChangesButton = ({ document }) => {
-    let { activeNote } = useNotes();
-    const toast = useToast();
+    let { saveNoteContent } = useNotes();
 
+    const toast = useToast();
     const [flag, setFlag] = useBoolean();
 
-    const saveNoteContent = () => {
-        activeNote.content = document.toString();
+    const saveNote = () => {
+        saveNoteContent(document.toString());
 
         toast({
             title: 'Changes saved!!',
@@ -36,7 +36,7 @@ const SaveChangesButton = ({ document }) => {
                 borderRadius="0"
                 colorScheme="green"
                 icon={<IoSaveOutline />}
-                onClick={saveNoteContent}
+                onClick={saveNote}
                 variant="outline"
                 _focus={'box-shadow: none'}
             />
