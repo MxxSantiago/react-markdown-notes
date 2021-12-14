@@ -11,7 +11,7 @@ import AddTaskModal from '../addTaskModal/AddTaskModal.component';
 
 import { navigationHeader } from './navigation-header.module.scss';
 
-const NavigationHeader = ({ visibleNotes, setVisibleNotes }) => {
+const NavigationHeader = ({ setVisibleNotes }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
