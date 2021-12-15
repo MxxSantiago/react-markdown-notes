@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 import App from './App.jsx';
 
@@ -30,4 +31,5 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
+serviceWorkerRegistration.register();
 reportWebVitals();
