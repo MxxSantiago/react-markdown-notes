@@ -2,7 +2,8 @@
 
 .panelsContainer {
     display: grid;
-    height: 100vh;
+    height: 100%;
+    max-height: 100vh;
     grid-area: panelsContainer;
     grid-template-areas: 'editor preview' 'panelsFooter panelsFooter';
     grid-template-columns: 1fr 1fr;
@@ -10,7 +11,6 @@
     width: 100%;
 
     @include smallDevice {
-        height: calc(100vh - #{$navbarHeight});
         grid-template-areas: 'editor' 'preview' 'panelsFooter';
         grid-template-columns: 100%;
         grid-template-rows: 1fr 1fr min-content;
