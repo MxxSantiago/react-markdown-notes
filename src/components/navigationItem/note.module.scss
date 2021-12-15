@@ -7,23 +7,17 @@
     border-bottom: 1px solid var(--chakra-colors-gray-700);
 
     &:hover {
-        background-color: lighten(
-            $color: rgba(240, 234, 234, 0.034),
-            $amount: 0
-        );
+        background-color: rgba(240, 234, 234, 0.034);
     }
 
     &:active {
-        background-color: lighten(
-            $color: rgba(240, 234, 234, 0.043),
-            $amount: 0
-        );
+        background-color: rgba(240, 234, 234, 0.043);
     }
 }
 
 .selectedNote {
     align-items: flex-start;
-    background-color: lighten($color: rgba(240, 234, 234, 0.068), $amount: 0);
+    background-color: rgba(240, 234, 234, 0.068) !important;
     display: flex;
     flex-direction: column;
     width: 100%;
