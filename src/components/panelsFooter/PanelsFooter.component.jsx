@@ -8,11 +8,7 @@ import { IconButton } from '@chakra-ui/button';
 import { Box } from '@chakra-ui/layout';
 import { Tooltip } from '@chakra-ui/react';
 
-import {
-    IoEyeOutline,
-    IoEyeOffOutline,
-    IoSettingsOutline,
-} from 'react-icons/io5';
+import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
 import { CgScan } from 'react-icons/cg';
 
 import { panelsFooter, panelsFooterIcon } from './panels-footer.module.scss';

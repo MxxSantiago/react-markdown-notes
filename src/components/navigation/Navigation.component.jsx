@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import NavigationHeader from '../navigationHeader/NavigationHeader.component';
-import FilterByTag from '../filterByTag/FilterByTag.component';
 
 import { Divider } from '@chakra-ui/layout';
 
