@@ -36,7 +36,7 @@ const AddTaskModal = ({ isOpen, onClose, setVisibleNotes }) => {
         }
 
         const newNote = {
-            content: '',
+            content: `# ${noteTitle}`,
             id: Date.now(),
             tags: tags,
             title: noteTitle,
