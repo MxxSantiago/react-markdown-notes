@@ -11,6 +11,7 @@
     width: 100%;
 
     @include smallDevice {
+        height: calc(100vh - #{$navbarHeight});
         grid-template-areas: 'editor' 'preview' 'panelsFooter';
         grid-template-columns: 100%;
         grid-template-rows: 1fr 1fr min-content;
